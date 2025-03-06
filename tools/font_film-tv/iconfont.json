@@ -1,0 +1,44 @@
+{
+  "id": "4843698",
+  "name": "film-tv",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1263388",
+      "name": "频道",
+      "font_class": "pindao",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "24185835",
+      "name": "首页",
+      "font_class": "icon_857",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "31528315",
+      "name": "台词",
+      "font_class": "taici",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "38038822",
+      "name": "溪禾短剧logo",
+      "font_class": "xiheduanjulogo",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "39807411",
+      "name": "短剧",
+      "font_class": "duanju",
+      "unicode": "e69f",
+      "unicode_decimal": 59039
+    }
+  ]
+}

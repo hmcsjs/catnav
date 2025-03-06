@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatNav猫咪导航</title>
+    <link rel="stylesheet" href="./imgs/logo/iconfont/iconfont.css">
+    <link rel="stylesheet" href="./tools/font_catnav/iconfont.css">
+    <link rel="stylesheet" href="./tools/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./tools/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body>
+    <!-- 下载成功和失败提示框 -->
+    <span class="tipbox animate__animated animate__fadeInDown"></span>
+    <!-- 导航栏模块 -->
+    <div class="navbar">
+        <ul class="navmenu">
+            <li>走暗门，耕瘦田，进窄门</li>
+            <li id="logo">
+                <img src="./imgs/logo/catnav.jpg" alt=""></li>
+            <li id="network">CatNav猫咪导航</li>
+            <li><a href="./index.html">首页</a></li>
+            <li><a href="./film-tv.html" target="_blank">影视频道</a></li>
+            <li><a href="./toai.html" target="_blank">ai交流</a></li>
+            <li><a href="./to-fanyi.html" target="_blank">优化翻译</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+    </div>
+    <!-- header模块 -->
+    <div class="header">
+        <button class="changeimg">
+            <i class="iconfont btnicon">&#xe621;</i>
+            更换背景</button>
+        <video src="./imgs/logo/carlogo.mp4" autoplay="autoplay" loop="loop" muted id="vlogo"></video>
+        <!-- 菜单列表 -->
+        <ul class="menulist">
+            <li><a href="./index.html">首页</a></li>
+            <li><a href="./film-tv.html" target="_blank">影视频道</a></li>
+            <li><a href="./to-fanyi.html" target="_blank">翻译</a></li>
+            <li><a href="./toai.html" target="_blank">ai问答</a></li>
+        </ul>
+        <!-- 搜索模块 -->
+        <div class="search">
+            <a href="#" class="browerimg"></a>
+            <input type="text" placeholder="请输入文字">
+            <a href="#" class="iconfont searchicon">&#xe60a;</a>
+
+        </div>
+        <!-- 个人列表 -->
+        <ul class="peoplelist">
+            <li>
+                <a href="#"></a>
+            </li>
+            <li><a href="#" class="iconfont peopleicon">&#xe600;</a>
+                <a href="#" class="peoplefont">会员</a></li>
+            <li><a href="#" class="iconfont peopleicon">&#xe8db;</a>
+                <a href="#" class="peoplefont">动态</a></li>
+            <li><a href="#" class="iconfont peopleicon">&#xe68f;</a>
+                <a href="#" class="peoplefont">收藏</a></li>
+            <li><a href="#" class="iconfont peopleicon">&#xe8d5;</a>
+                <a href="#" class="peoplefont">历史</a></li>
+
+        </ul>
+    </div>
+    <!-- 浏览器列表 -->
+    <ul class="browerlist">
+        <li>
+            <a href="#" class="browericon br1" data-id="0"></a><a href="#" class="browerfont">必应</a></li>
+        <li>
+            <a href="#" class="browericon br2" data-id="1"></a><a href="#" class="browerfont">百度</a></li>
+        <li>
+            <a href="#" class="browericon br3" data-id="2"></a><a href="#" class="browerfont">谷歌</a></li>
+        <li>
+            <a href="#" class="browericon br4" data-id="3"></a><a href="#" class="browerfont">yandex</a></li>
+        <li>
+            <a href="#" class="browericon br5" data-id="4"></a><a href="#" class="browerfont">360浏览器</a></li>
+    </ul>
+    <!-- 时间和翻译模块 -->
+    <div class="time-translation">
+        <div class="time">
+            <div class="year-box">
+                <svg class="icon year-icon" aria-hidden="true">
+                    <use xlink:href="#icon-riqi"></use>
+                  </svg>
+                <span class="year">
+                </span>
+            </div>
+            <div class="time-box">
+                <svg class="icon time-icon" aria-hidden="true">
+                    <use xlink:href="#icon-shijian"></use>
+                  </svg>
+                <span class="timetext"></span>
+            </div>
+        </div>
+        <div class="translation">
+            <i>自动检测&emsp;(中文&ensp;/&ensp;英语)</i><i>转换</i><i>自动转换&emsp;(中文&ensp;/&ensp;英语)</i>
+            <textarea type="text" class="custom-textarea" placeholder="请输入内容..." maxlength="200" minlength="1" autofocus></textarea>
+            <div class="custom-text">
+            </div>
+            <span class="d-inline-block copybtn" data-toggle="popover">
+                    <button class="btn btn-primary"  type="button">复制</button>
+                  </span>
+        </div>
+    </div>
+    </div>
+    <!-- 轮播图 -->
+    <div class="swiper-aipage">
+        <!-- <span class="img-tip">swiper图片加载中......</span> -->
+        <img src="./imgs/load.gif" alt="图片加载失败...">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+            </div>
+            <!-- Add Arrows -->
+            <!-- <div class="swiper-button-next"></div> -->
+            <!-- <div class="swiper-button-prev"></div> -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <button class="refresh"><svg class="icon r-icon" aria-hidden="true">
+            <use xlink:href="#icon--_shuaxin"></use>
+          </svg></button>
+        <button class="load">
+            <svg class="icon load-icon" aria-hidden="true">
+                <use xlink:href="#icon-34_xiazai"></use>
+              </svg></button>
+        </button>
+        <!-- ai对话模块 -->
+        <div class="aipage">
+            <ul class="list-group">
+                <li class="list-fold">
+                    <h6><img src="./imgs/logo/toailogo.png" alt=""><span style="font-size: 30px;color: black !important;">Toai</span>&emsp;</h6>
+                    <button class="fold" style="display: inline-block !important;">折叠</button>
+                </li>
+                <h6 class="list-group-item">常见的ai网站</h6>
+                <li class="list-group-item active"><a href="https://chat.openai.com/" target="_blank" class="ac">ChatGPT <span style="font-size: 10px;">(国内无法访问)</span></a></li>
+                <li class="list-group-item"><a href="https://yiyan.baidu.com/ " target="_blank">百度文心一言</a></li>
+                <li class="list-group-item"><a href="https://tongyi.aliyun.com/ " target="_blank">阿里通义千问</a></li>
+                <li class="list-group-item"><a href="https://www.doubao.com/" target="_blank">抖音豆包</a></li>
+                <li class="list-group-item"><a href="https://deepseek.com/" target="_blank">deepseek</a></li>
+            </ul>
+            <div class="ai-answer">
+                <h6 style="text-align: center;">此内容为临时对话，关闭或刷新内容丢失</h6>
+                <div class="ai-text">
+                </div>
+                <div class="input-group">
+                    <textarea style="overflow: hidden;width: 100%;padding-bottom: 25px;" rows="2" cols="150" type="text" class="form-control" placeholder="请输入您的问题..." aria-label="Text input with segmented dropdown button"></textarea>
+                    <div class="input-btn">
+                        <button type="button">
+                            <svg class="icon btn-icon" aria-hidden="true">
+                                <use xlink:href="#icon-shangchuan"></use>
+                              </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 网址导航模块 -->
+    <div class='webnav'>
+        <h5>图片处理</h5>
+        <ul>
+            <li>
+                <a href="https://www.piccompress.com/zh/"><img src="./imgs/favicon/pic-logo.png" alt="">
+                    <div>
+                        <h4>piccompress</h4>
+                        <p>免费图片在线压缩网站</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://unblurimage.ai/zh/"> <img src="./imgs/favicon/unblur-logo.png" alt="">
+                    <div>
+                        <h4>unblurimage</h4>
+                        <p>免费图片在线变清晰网站</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://sm.ms/"> <img src="./imgs/favicon/94f50-sm.ms.png" alt="">
+                    <div>
+                        <h4>sm.sm</h4>
+                        <p>免费的图床（图片托管）服务网站。生成url，可以使用在web应用中</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div style="clear: both;"></div>
+        <!-- 清除浮动 -->
+        <h5>影视频道</h5>
+        <ul>
+            <li>
+                <a href="https://www.yinghuadm.cn/"><img src="./imgs/favicon/yinghua-logo.png" alt="">
+                    <div>
+                        <h4>樱花动漫</h4>
+                        <p>免费在线动漫网站</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://xiuer.pro/"> <img src="./imgs/favicon/xiuer-logo.gif" alt="">
+                    <div>
+                        <h4>秀儿影视</h4>
+                        <p>免费电影电视剧网站</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://ygg02.com/"> <img src="./imgs/favicon/yigeg-logo.png" alt="">
+                    <div>
+                        <h4>一个G影视</h4>
+                        <p>免费电影电视剧在线观看网站</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://yesvip.top"> <img src="./imgs/favicon/yesvip-logo.png" alt="">
+                    <div>
+                        <h4>YesVip</h4>
+                        <p>腾讯，优酷等视频解析，vip变免费</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div style="clear: both;"></div>
+        <h5>ai网站</h5>
+        <ul>
+            <li>
+                <a href="https://www.deepseek.com/"> <img src="./imgs/favicon/deepseek-logo.png" alt="">
+                    <div>
+                        <h4>deepseek</h4>
+                        <p>国内最火的ai大模型，据说震惊全球</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.doubao.com/ "> <img src="./imgs/favicon/logo-toubao.png " alt=" ">
+                    <div>
+                        <h4>豆包</h4>
+                        <p>字节旗下的大模型，抖音号注册免费使用</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.aippt.cn/ "> <img src="./imgs/favicon/logo_aippt.png " alt=" ">
+                    <div>
+                        <h4>aiPPT</h4>
+                        <p>免费在线ai制作ppt</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://ailegal.baidu.com/ "> <img src="./imgs/favicon/ailegal-logo.png " alt=" ">
+                    <div>
+                        <h4>法行宝</h4>
+                        <p>专业法律助手，我可以解释法律法规、解答法律问题</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://openai.com/ "> <img src="./imgs/favicon/openai-icon-png.png " alt=" ">
+                    <div>
+                        <h4>ChatGPT</h4>
+                        <p>国外超牛ai大模型，编程人员的好帮手</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div style="clear: both; "></div>
+        <h5>编程软件官网</h5>
+        <ul>
+            <li>
+                <a href="https://www.cursor.com/cn "><img src="./imgs/favicon/cursor-logo.png " alt=" ">
+                    <div>
+                        <h4>CurSor</h4>
+                        <p>继承ai大模型的智能化编程工具，现在很火</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://code.visualstudio.com/ "> <img src="./imgs/favicon/vscode-logo.png " alt=" ">
+                    <div>
+                        <h4>VsCode</h4>
+                        <p>流行的老牌编程软件，前端必备</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href=" https://www.jetbrains.com/ "> <img src="./imgs/favicon/pc-logo.png " alt=" ">
+                    <div>
+                        <h4>PyCharm</h4>
+                        <p>python最好的编程软件</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href=" https://www.dcloud.io/ "> <img src="./imgs/favicon/hbuilderx_icon@2x.png " alt=" ">
+                    <div>
+                        <h4>HbuilderX</h4>
+                        <p>uniapp专用编程软件，免费好用</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div style="clear: both; "></div>
+        <h5>网站导航</h5>
+        <ol class="webnav-list ">
+            <li><a href="https://www.plnav.com/ ">迷路导航</a></li>
+            <li><a href="https://www.codernav.cn/ ">技术导航</a></li>
+            <li><a href="https://ai-bot.cn/ ">AI工具集</a></li>
+            <li><a href="https://www.zjnav.com ">终极导航</a></li>
+        </ol>
+    </div>
+    <div style="clear: both; "></div>
+    <footer>
+        <h5>本网页内容均来自网络，真实性无法保证。真假自辩。如出现任何损失，请自行承担。如果涉及版权问题，请联系我，立马删除。</h5>
+        <h6>QQ:1780766457 &emsp;微信公众号搜索：猫咪导航技术</h6>
+        <img src="./imgs/logo/猫咪公众号.jpg" alt="">
+    </footer>
+    <script src=" https://unpkg.com/axios/dist/axios.min.js "></script>
+    <script src="./tools/swiper/swiper-bundle.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+    <script src="./tools/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js "></script>
+    <script src="./tools/md5.js "></script>
+    <script src="./tools/font_catnav/iconfont.js"></script>
+    <script src="./js/index.js "></script>
+</body>
+
+</html>

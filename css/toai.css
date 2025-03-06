@@ -1,0 +1,211 @@
+ /* ai对话模块 */
+ 
+ html,
+ body {
+     margin: 0;
+     padding: 0;
+ }
+ 
+ .aipage {
+     width: 100%;
+     height: 700px;
+     padding: 0 2px;
+     border: #f7f1f1 solid 2px;
+ }
+ 
+ .list-fold h6 img,
+ .unfold-box img {
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+     border: #007bff solid 2px;
+ }
+ 
+ .unfold-box {
+     float: left;
+     width: 8%;
+     display: none;
+     padding: 10px 10px;
+     height: 690px;
+     border-right: #f7f1f1 solid 2px;
+ }
+ 
+ .unfold {
+     display: inline-block;
+     border: 0;
+     background-color: #fff;
+     width: 30px;
+     height: 20px;
+     border-radius: 10px;
+     background: url(../tools/toai-icon/zhankai.png) no-repeat center/auto 100%;
+     background-color: rgb(77, 169, 118);
+ }
+ 
+ .list-fold h6 {
+     width: 100%;
+     padding-left: 10px;
+     display: flex;
+     align-items: center;
+     /* 垂直居中对齐 */
+ }
+ 
+ .fold {
+     display: inline-block;
+     border: 0;
+     background-color: #fff;
+     width: 30px;
+     height: 20px;
+     border-radius: 10px;
+     margin-left: 100px;
+     background: url(../tools/toai-icon/zhedie.png) no-repeat center/auto 100%;
+     background-color: rgb(77, 169, 118);
+ }
+ 
+ .list-fold {
+     margin: 0;
+     padding: 0;
+ }
+ 
+ .list-group {
+     float: left;
+     width: 20%;
+     margin: 0;
+ }
+ 
+ .list-group-item {
+     position: relative;
+     margin: 0 !important;
+     display: flex;
+     align-items: center;
+     /* 垂直居中 */
+ }
+ 
+ .list-group-item a {
+     color: #000;
+     text-decoration: none;
+ }
+ 
+ .list-group-item a:hover {
+     font-size: 18px
+ }
+ 
+ .ac {
+     color: #fff !important;
+ }
+ 
+ .add-input:hover {
+     height: 50px;
+ }
+ 
+ .add-input {
+     padding: 0;
+ }
+ /* 列表中删除按钮 */
+ 
+ .delbtn {
+     width: 28px;
+     height: 28px;
+     border-radius: 50%;
+     position: absolute;
+     right: 20px;
+     padding: 5px 0;
+     border: 0;
+     background: url(../tools/toai-icon/shanchu.png) no-repeat center/auto 100%;
+     background-color: #fff;
+ }
+ 
+ .delbtn:hover {
+     width: 30px;
+     height: 30px;
+ }
+ /* ai问答内容显示模块 */
+ 
+ .toai {
+     width: 80%;
+     height: 100%;
+     border-left: #f6f5fa solid 2px;
+     display: flex;
+     justify-content: center;
+     /* 水平居中 */
+ }
+ 
+ .ai-answer {
+     position: relative;
+     float: left;
+     width: 60%;
+     height: 100%;
+ }
+ 
+ .ai-text {
+     display: flex;
+     width: 100%;
+     height: 68%;
+     margin-top: 20px;
+     padding: 10px 5px;
+     overflow: auto;
+     flex-direction: column;
+ }
+ 
+ .ai-answer h6 {
+     color: #007bff;
+     margin-top: 8px;
+ }
+ 
+ .question,
+ .answers {
+     font-size: 15px;
+     max-width: 50ch;
+     white-space: normal;
+     word-wrap: break-word;
+     margin-top: 5px;
+ }
+ 
+ .question {
+     align-self: flex-end;
+     border: #838181 solid 2px;
+     padding: 6px 6px;
+     background-color: #f0f3f5;
+     border-radius: 5px;
+ }
+ 
+ .answers {
+     align-items: flex-start;
+ }
+ 
+ .input-btn {
+     position: absolute;
+     bottom: 8px;
+     right: 15px;
+     z-index: 6;
+ }
+ 
+ .input-btn button {
+     background-color: pink;
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+     border: 0;
+     background: url(../tools/toai-icon/fasong.png) no-repeat center/auto 100%;
+ }
+ 
+ .input-btn button:hover {
+     animation: pulse 0.5s 1;
+ }
+ /* 初始显示logo界面 */
+ 
+ .ai-text h4 {
+     width: 80%;
+     height: 50%;
+     background-color: #e6e1e1;
+     margin: 60px 62px;
+     display: flex;
+     align-items: center;
+     /* 垂直居中对齐 */
+     padding: 10px 80px;
+ }
+ 
+ .ai-text h4 img {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+ }

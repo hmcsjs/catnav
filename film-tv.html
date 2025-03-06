@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影视频道</title>
+    <link rel="stylesheet" href="./tools/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./tools/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./css/film-tv.css">
+    <link rel="stylesheet" href="./tools/font_film-tv/iconfont.css">
+</head>
+
+<body>
+    <header>
+        <span><i class="iconfont icon-pindao icon"></i>&ensp;影视频道</span>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="影视剧台词搜索，请输入关键词..." aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">提交</button>
+        </div>
+        <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                <i class="iconfont icon-icon_857"></i>&ensp;首页
+            </button>
+            <button type="button" class="list-group-item list-group-item-action"><i class="iconfont icon-xiheduanjulogo"></i>&ensp;猫眼电影实时排名</button>
+            <button type="button" class="list-group-item list-group-item-action"><i class="iconfont icon-taici"></i>&ensp;影视台词</button>
+        </div>
+    </header>
+    <nav class="swiper-div">
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./imgs/film-tv/哪吒2.png" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/射雕.jpg" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/熊出没.png" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/偏偏喜欢你.png" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/封神2.png" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/小小的我.png" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/误杀.jpg" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/帕丁顿熊.jpg" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/插翅难飞.jpg" alt="图片加载失败"></div>
+                <div class="swiper-slide"><img src="./imgs/film-tv/星际变种.jpg" alt="图片加载失败"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </nav>
+    <main>
+        <div class="playlet">
+            <h4>猫眼电影实时排名</h4>
+            <ul>
+                <li>
+                    <p><span>top:1</span>&emsp;<span>哪吒之魔童闹海</span></p>
+                    <p><span>平均占座率：0.4%</span>&emsp;<span>平均观影人次/每场:0.7</span></p>
+                    <p><span>票房占比：0.4%</span>&emsp;<span>放映场次占比:0.7</span></p>
+                    <p><span>上映时间：0.4%</span>&emsp;<span>放映场次:0.7</span></p>
+                    <p>累计票房：4444444444</p>
+                </li>
+            </ul>
+            <h4>影视台词搜索</h4>
+            <ul class="lines">
+
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <h5>信息来自网络，无法保证准确性。喜欢的话,麻烦关注微信公众号。</h5>
+        <h6>QQ:1780766457 &emsp;微信公众号搜索：猫咪导航技术</h6>
+        <img src="./imgs/logo/猫咪公众号.jpg" alt="">
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="./tools/bootstrap-4.6.2-dist/js/bootstrap.min.js " crossorigin="anonymous "></script>
+    <script src="./tools/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        var mySwiper = new Swiper(".mySwiper", {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            autoplay: {
+                delay: 3000, // 每 3 秒切换一次
+                disableOnInteraction: false, // 用户操作后不停止自动播放
+            },
+            effect: 'cube',
+            speed: 1000,
+            allowTouchMove: true,
+        });
+        // 获取 Swiper 容器
+        const swiperContainer = document.querySelector('.swiper-wrapper');
+
+        // 鼠标经过时停止自动播放
+        swiperContainer.addEventListener('mouseenter', () => {
+            mySwiper.autoplay.stop();
+        });
+
+        // 鼠标离开时恢复自动播放
+        swiperContainer.addEventListener('mouseleave', () => {
+            mySwiper.autoplay.start();
+        });
+
+        // 电梯导航
+        let lists = document.querySelectorAll('.list-group-item')
+        let h4s = document.querySelectorAll('.playlet h4')
+        let input = document.querySelector('.form-control')
+
+        lists[0].addEventListener('click', () => {
+            window.location.href = "./film-tv.html"
+        })
+        lists[1].addEventListener('click', () => {
+            h4s[0].scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        })
+        lists[2].addEventListener('click', () => {
+            h4s[1].scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+            input.placeholder = '影视台词，请输入台词...'
+        })
+
+        // 搜索提交按钮
+        let searchbtn = document.querySelector('#button-addon2')
+        let uls = document.querySelectorAll('.playlet ul')
+            // 获取影视台词数据
+        function getLines() {
+            h4s[1].scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+            axios.get(`https://api.pearktrue.cn/api/media/lines.php?word=${input.value}&page=1`).then(re => {
+                if (re.data.data) {
+                    let newLists = re.data.data.slice(0, 10).map(item => {
+                        return `<li>
+                        <img src=${item.local_img || './imgs/film-tv/unload.jpg'} alt="图片加载失败...">
+                        <div class="info">
+                            <p>${item.title.slice(0,10)}</p>
+                            <p>时间:${item.update_time}</p>
+                            <p>国家:${item.area}</p>
+                            <p>类型:${item.tags}</p>
+                            <p>导演:${item.directors}</p>
+                            <p>演员:${item.actors.split(' ').slice(0,4).join(' ')}</p>
+                            </di>
+                            <div>
+                                <p>关键词:${item.zh_word}</p>
+                                <pre>
+                               <br>${item.all_zh_word.join('</br>')}
+                            </pre>
+                            </div>
+                            <div style="clear: both;"></div>
+                    </li>`
+                    }) || '';
+                    uls[1].innerHTML = newLists + '<div style="clear: both;"></div>'
+                }
+            }).catch(er => {
+                alert(er.data)
+            })
+        }
+        searchbtn.addEventListener('click', () => {
+                getLines()
+            })
+            // s输入框按下回车事件
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                getLines()
+            }
+        })
+        axios.get('https://tools.mgtv100.com/external/v1/pear/maoYan').then(re => {
+            let newLists = re.data.data.slice(0, 10).map(item => {
+                return `<li>
+                    <p><span>top:${item.top}</span>&emsp;<span>${item.movieName}</span></p>
+                    <p><span>平均占座率:${item.avgSeatView}</span>&ensp;<span>平均观影人次/场:${item.avgShowView}</span></p>
+                    <p><span>票房占比:${item.boxRate}</span>&ensp;<span>放映场次占比:${item.showCountRate}</span></p>
+                    <p><span>上映时间:${item.releaseInfo}</span>&ensp;<span>放映场次:${item.showCount}</span></p>
+                    <p>累计票房：${item.sumBoxDesc}</p>
+                </li>`
+            }) || '';
+            uls[0].innerHTML = newLists.join('') + '<div style="clear: both;"></div>'
+        }).catch(er => {
+            uls[0].innerHTML = `<li>
+                    <p><span>top:4</span> <span>封神第二部：战火西岐</span></p>
+                    <p><span>平均占座率:1.3%</span> <span>平均观影人次/场:1.2</span></p>
+                    <p><span>票房占比:6.9%</span> <span>放映场次占比:5.0%</span></p>
+                    <p><span>上映时间:上映34天</span> <span>放映场次:17719</span></p>
+                    <p>累计票房：12.12亿</p>
+                </li><div style="clear: both;"></div>`
+            alert('加载失败...')
+        })
+
+        axios.get('https://api.pearktrue.cn/api/media/lines.php?word=你爱我吗&page=1').then(re => {
+            if (re.data.data) {
+                let newLists = re.data.data.slice(0, 10).map(item => {
+                    return `<li>
+                        <img src=${item.local_img || './imgs/film-tv/unload.jpg'} alt="图片加载失败...">
+                        <div class="info">
+                            <p>${item.title.slice(0,10)}</p>
+                            <p>时间:${item.update_time}</p>
+                            <p>国家:${item.area}</p>
+                            <p>类型:${item.tags}</p>
+                            <p>导演:${item.directors}</p>
+                            <p>演员:${item.actors.split(' ').slice(0,4).join(' ')}</p>
+                            </di>
+                            <div>
+                                <p>关键词:${item.zh_word}</p>
+                                <pre>
+                               <br>${item.all_zh_word.join('</br>')}
+                            </pre>
+                            </div>
+                            <div style="clear: both;"></div>
+                    </li>`
+                }) || '';
+                uls[1].innerHTML = newLists + '<div style="clear: both;"></div>'
+            } else {
+                uls[1].innerHTML = ` <li>
+                    <img src="./imgs/film-tv/unload.jpg" alt="">
+                    <div class="info">
+                        <p>时间:2020-09-19&emsp;11:40:23</p>
+                        <p>国家:鬼影 ชัตเตอร์ กดติดวิญญาณ</p>
+                        <p>类型:悬疑 惊悚 恐怖</p>
+                        <p>导演:班庄·比辛达拿刚 柏德潘·王般</p>
+                        <p>演员:阿南达·爱华灵咸 </p>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div>
+                        <p>关键词:你还爱我吗</p>
+                        <pre>
+                            "事已到此",
+                            "你也为所做的事感到后悔了",
+                            "我肯定她是知道的",
+                            "不要再说有关死的事",
+                            "对不起",
+                            "你还爱我吗",
+                            "你是不会离弃我的 对吧",
+                            "珍",
+                            "珍",
+                            "东",
+                            "珍"
+                        </pre>
+                    </div>
+                </li>`
+            }
+        }).catch(er => {
+            uls[1].innerHTML = ` <li>
+                    <img src="./imgs/film-tv/unload.jpg" alt="">
+                    <div class="info">
+                        <p>时间:2020-09-19&emsp;11:40:23</p>
+                        <p>国家:鬼影 ชัตเตอร์ กดติดวิญญาณ</p>
+                        <p>类型:悬疑 惊悚 恐怖</p>
+                        <p>导演:班庄·比辛达拿刚 柏德潘·王般</p>
+                        <p>演员:阿南达·爱华灵咸 </p>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div>
+                        <p>关键词:你还爱我吗</p>
+                        <pre>
+                            "事已到此",
+                            "你也为所做的事感到后悔了",
+                            "我肯定她是知道的",
+                            "不要再说有关死的事",
+                            "对不起",
+                            "你还爱我吗",
+                            "你是不会离弃我的 对吧",
+                            "珍",
+                            "珍",
+                            "东",
+                            "珍"
+                        </pre>
+                    </div>
+                </li>`
+            alert('加载失败...')
+        })
+    </script>
+</body>
+
+</html>

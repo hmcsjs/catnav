@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./tools/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/toai.css">
+</head>
+
+<body>
+    <div class="aipage">
+        <div class="unfold-box">
+            <img src="./imgs/logo/toailogo.png" alt=""><button class="unfold"></button>
+        </div>
+        <ul class="list-group">
+            <li class="list-fold ">
+                <h6><img src="./imgs/logo/toailogo.png" alt=" ">&ensp;<span style="font-size: 30px;color: black !important;margin-top: 5px; vertical-align: middle; ">Toai</span>
+                    <button class="fold"></button></h6>
+            </li>
+            <h6 class="list-group-item">常见的ai网站</h6>
+            <li class="list-group-item active"><a href="https://chat.openai.com/" target="_blank" class="ac">ChatGPT <span style="font-size: 10px; ">(国内无法访问)</span></a></li>
+            <li class="list-group-item"><a href="https://yiyan.baidu.com/" target="_blank">百度文心一言</a></li>
+            <li class="list-group-item"><a href="https://tongyi.aliyun.com/" target="_blank">阿里通义千问</a></li>
+            <li class="list-group-item"><a href="https://www.doubao.com/" target="_blank ">抖音豆包</a></li>
+            <li class="list-group-item"><a href="https://deepseek.com/ " target="_blank ">deepseek</a></li>
+            <h6 class="add-input list-group-item ">
+                <button type="button" class="btn btn-primary" data-toggle='modal' data-target="#exampleModal" style="color: black !important;width: 100%;height: 100%;border: none;background-color: #fff;">+</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">ai模型网址和名称</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">URL(网址)</span>
+                                    </div>
+                                    <input type="text" class="form-control url-input" placeholder="https://example.com/users/" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="basic-addon1">名称</span>
+                                    </div>
+                                    <input type="text" class="form-control user-input" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary add-btn">add model</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h6>
+        </ul>
+
+        <div class="toai">
+            <div class="ai-answer">
+                <h6 style="text-align: center;">此内容为临时对话，关闭或刷新内容丢失</h6>
+                <div class="ai-text">
+                    <h4>
+                        <img src="./imgs/logo/toailogo.png" alt=" ">&emsp;<span style="font-size: 50px;width: 800px;"><span style="color: rgb(55, 203, 203);">Hi</span>&ensp;Toai!</span>
+                        </br>
+                        <div style="font-size: 20px;">接口来自于夏柔yiyu:感谢！</div>
+                    </h4>
+
+                </div>
+                <div class="input-group">
+                    <textarea style="overflow: hidden;width: 90%;padding-bottom: 40px;height:140px;background-color: aliceblue; " rows="4" cols="150" type="text" class="form-control" placeholder="请输入您的问题..." aria-label="Text input with segmented
+            dropdown button"></textarea>
+                    <div class="input-btn">
+                        <button type="button" id="fly-btn"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src=" https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="./tools/bootstrap-4.6.2-dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script>
+        // ai问答toai模块
+        // ai模型列表加载本地数据
+        let listGroup = document.querySelector('.list-group')
+        let addInput = document.querySelector('.add-input')
+        let getArr = JSON.parse(localStorage.getItem('urlList')) || ''
+        loadList(getArr)
+            //   鼠标移动，列表样式变换
+        let listItems = document.querySelectorAll('.list-group li')
+
+        function activeLists(re) {
+            listGroup.addEventListener('mousemove', e => {
+                if (e.target.tagName === 'LI') {
+                    re.forEach(item => {
+                        item.classList.contains('active') && item.classList.remove('active')
+                        item.children[0].classList.contains('ac') && item.children[0].classList.remove('ac')
+                    })
+                    e.target.classList.add('active')
+                    e.target.children[0].classList.add('ac')
+                } else if (e.target.tagName === 'A') {
+                    listItems.forEach(item => {
+                        item.classList.contains('active') && item.classList.remove('active')
+                        item.children[0].classList.contains('ac') && item.children[0].classList.remove('ac')
+                    })
+                    e.target.parentNode.classList.add('active')
+                    e.target.classList.add('ac')
+                }
+            })
+        }
+        activeLists(listItems)
+            // 点击按钮添加模型事件
+        let addbtn = document.querySelector('.add-btn')
+        let urlInput = document.querySelector('.url-input')
+        let userInput = document.querySelector('.user-input')
+        let urlArr = Array()
+        addbtn.addEventListener('click', () => {
+            if (urlInput.value && userInput.value) {
+                let contranstArr = JSON.parse(localStorage.getItem('urlList')) || ''
+                contranstArr.forEach(item => {
+                        if (item.user === userInput.value) {
+                            alert('名称已存在,请重新输入...')
+                            return
+                        } else if (item.url === urlInput.value) {
+                            alert('网址已存在,请重新输入...')
+                            return
+                        }
+                    })
+                    // 定义 URL 正则表达式
+                const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+                // 测试输入是否符合正则表达式
+                if (urlRegex.test(urlInput.value)) {
+                    let liElement = document.createElement('li')
+                    liElement.classList.add('list-group-item')
+                    liElement.innerHTML = `<a href="${urlArr.value}" target="_blank">${userInput.value}</a><button class="delbtn"></button>`
+                    listGroup.insertBefore(liElement, addInput)
+                    $('#exampleModal').modal('hide');
+                    let getArr = JSON.parse(localStorage.getItem('urlList')) || urlArr
+                    let obj = {}
+                    obj.url = urlInput.value
+                    obj.user = userInput.value
+                    getArr.push(obj)
+                    localStorage.setItem('urlList', JSON.stringify(getArr))
+                    urlInput.value = ' '
+                    userInput.value = ' '
+                } else {
+                    alert('输入的网址不符合规范')
+                }
+            } else {
+                alert('请输入地址和名称.....')
+            }
+            let listItems = document.querySelectorAll('.list-group li')
+            activeLists(listItems)
+        })
+
+        //  初始化从本地存储数据
+        function loadList(data) {
+            if (data) {
+                data.forEach(list => {
+                    let liElement = document.createElement('li')
+                    liElement.classList.add('list-group-item')
+                    liElement.innerHTML = `<a href="${list.url}" target="_blank">${list.user}</a><button class="delbtn"></button>`
+                    listGroup.insertBefore(liElement, addInput)
+                })
+            }
+        }
+        // 点击网址里面的按钮删除网址
+        listGroup.addEventListener('click', function(e) {
+                if (e.target.tagName === 'BUTTON') {
+                    let aText = e.target.previousElementSibling ? e.target.previousElementSibling.textContent : ''
+                    getArr = JSON.parse(localStorage.getItem('urlList')) || ''
+                    let index = getArr.findIndex(item => item.user === aText);
+                    if (index !== -1) {
+                        getArr.splice(index, 1); // 从数组中删除该对象
+                    }
+                    localStorage.setItem('urlList', JSON.stringify(getArr));
+                    if (e.target.previousElementSibling.tagName === 'A') {
+                        e.target.parentNode.remove()
+                    }
+                }
+
+            })
+            // 折叠按钮
+        let foldbtn = document.querySelector('.fold')
+        let toai = document.querySelector('.toai')
+        let unflodBox = document.querySelector('.unfold-box')
+        foldbtn.addEventListener('click', () => {
+                toai.style.width = '91%'
+                listGroup.style.display = 'none'
+                unflodBox.style.display = 'block'
+            })
+            // 展开按钮
+        let unfoldbtn = document.querySelector('.unfold')
+        unfoldbtn.addEventListener('click', () => {
+                toai.style.width = '80%'
+                listGroup.style.display = 'block'
+                unflodBox.style.display = 'none'
+            })
+            // 智能回复模块
+        let aiText = document.querySelector('.ai-text')
+        let inputBtn = document.querySelector('.input-btn')
+            // 初始滚动到底部
+        window.onload = function() {
+            aiText.scrollTop = aiText.scrollHeight;
+        };
+        // textarea输入内容不显示滚动条,文本框向上延伸
+        let aiTextarea = document.querySelector('.input-group textarea')
+        let flag = true
+        aiTextarea.addEventListener('input', function() {
+                this.style.height = "auto";
+                this.style.height = this.scrollHeight + "px";
+                this.style.transform = `translateY(${140 -this.scrollHeight}px)`; // 让其向上扩展
+                inputBtn.style.bottom = `${this.scrollHeight - 132}px`
+            })
+            // 点击发送按钮,事件处理
+        let toaiLogo = document.querySelector('.ai-text h4')
+            // 重新创建控制器
+        let controller = new AbortController();
+        let signal = controller.signal;
+
+        function ask() {
+            if (aiTextarea.value && flag) {
+                flag = false
+                document.querySelector('#fly-btn').style.background = `url(../tools/toai-icon/stop-circle-full.png) no-repeat center/auto 100%`
+                toaiLogo.style.display = 'none'
+                    // 1. 创建一个新的 div 元素
+                const newDiv = document.createElement('div');
+                // 2. 设置元素的属性
+                newDiv.className = 'question'; // 设置 class
+                // 3. 添加内容
+                newDiv.textContent = aiTextarea.value
+                aiText.appendChild(newDiv);
+                aiText.scrollTop = aiText.scrollHeight;
+                aiTextarea.value = ''
+                let waitDiv = document.createElement('div')
+                waitDiv.className = 'wait'
+                waitDiv.innerHTML = '<video autoplay loop src="./tools/toai-icon/光照.mp4" alt="" style="width: 28px; height: 28px; border-radius: 50%;">'
+                aiText.appendChild(waitDiv);
+                axios.get(`https://cors-anywhere.herokuapp.com/https://api.52vmy.cn/api/chat/yiyan?msg=${aiTextarea.value}`, {
+                        signal
+                    })
+                    .then(response => {
+                        aiText.removeChild(waitDiv);
+                        console.log(111, waitDiv);
+                        // 1. 创建一个新的 div 元素
+                        const newDiv = document.createElement('div');
+                        // 2. 设置元素的属性
+                        newDiv.className = 'answer'; // 设置 class
+                        // 3. 添加内容
+                        newDiv.textContent = response.data.data.answer
+                        aiText.appendChild(newDiv);
+                        document.querySelector('.input-btn button').style.background = `url(../tools/toai-icon/fasong.png) no-repeat center/auto 100%`
+                        flag = true
+                    }).catch(error => {
+                        aiText.removeChild(waitDiv);
+                        if (axios.isCancel(error)) {
+                            // 1. 创建一个新的 div 元素
+                            const newDiv = document.createElement('div');
+                            // 2. 设置元素的属性
+                            newDiv.className = 'answer'; // 设置 class
+                            // 3. 添加内容
+                            newDiv.textContent = '请求被取消'
+                            aiText.appendChild(newDiv);
+                        } else {
+                            // 1. 创建一个新的 div 元素
+                            const newDiv = document.createElement('div');
+                            // 2. 设置元素的属性
+                            newDiv.className = 'answer'; // 设置 class
+                            // 3. 添加内容
+                            newDiv.textContent = '服务器错误！'
+                            aiText.appendChild(newDiv);
+                        }
+                        document.querySelector('.input-btn button').style.background = `url(../tools/toai-icon/fasong.png) no-repeat center/auto 100%`
+                        flag = true
+                    });
+            } else if (!flag) {
+                //取消上一次请求
+                // 取消之前的请求
+                controller.abort();
+                flag = true
+                document.querySelector('.input-btn button').style.background = `url(../tools/toai-icon/fasong.png) no-repeat center/auto 100%`
+                controller = new AbortController(); // 重新创建控制器
+                signal = controller.signal;
+            }
+        }
+        inputBtn.addEventListener('click', function() {
+                ask()
+            })
+            // 键盘按下回车发送请求
+        document.querySelector('textarea').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                ask()
+            }
+            if (e.key === 'Shift') {
+                const currentValue = this.value;
+                const caretPosition = this.selectionStart;
+                this.value = currentValue.slice(0, caretPosition) + '\n' + currentValue.slice(caretPosition);
+                this.selectionStart = this.selectionEnd = caretPosition + 1;
+                event.preventDefault();
+            }
+        })
+    </script>
+</body>
+
+</html>

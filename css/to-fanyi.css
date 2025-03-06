@@ -1,0 +1,198 @@
+/* 头部模块 */
+
+header {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background: url(../imgs/to-fanyi/top.jpg) no-repeat center/cover;
+    display: flex;
+    line-height: 70px;
+    /* 垂直居中对齐 */
+}
+
+li {
+    list-style: none;
+    float: left;
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.top li:nth-child(4) {
+    border-left: #000 2px solid;
+    padding-left: 20px;
+    width: 1285px;
+    overflow: hidden;
+    margin: 0;
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(80%);
+        /* 初始位置在右侧屏幕外 */
+    }
+    100% {
+        transform: translateX(-40%);
+        /* 最终位置在左侧屏幕外 */
+    }
+}
+
+.top li:nth-child(4)>span {
+    display: block;
+    width: 100%;
+    /* height: 100%; */
+    white-space: nowrap;
+    /* 防止文本换行 */
+    animation: moveLeft 20s linear infinite;
+    /* 应用动画，持续时间 5 秒，线性运动，无限循环 */
+}
+
+.top {
+    position: relative;
+}
+
+.top button {
+    padding: 0;
+    width: 60px;
+    height: 30px;
+    line-height: 20px;
+    /* 垂直居中对齐 */
+    border-width: 1px;
+    position: absolute;
+    right: 30px;
+    bottom: -8px;
+}
+
+
+/* main翻译部分 */
+
+.fanyi {
+    width: 90%;
+    height: 400px;
+    margin: 10px auto;
+    background: url(../imgs/to-fanyi/main.jpg) no-repeat center/cover;
+    padding: 10px 60px;
+    /* 水平居中 */
+}
+
+.fanyi-top span {
+    margin-left: 80px;
+}
+
+.fanyi-top button {
+    display: inline-block;
+    margin-left: 590px;
+    width: 30px;
+    height: 30px;
+    background: url(../imgs/to-fanyi/转换.png) no-repeat center/cover;
+    border: greenyellow 2px solid;
+    border-radius: 50%;
+}
+
+.fanyi-top span:nth-child(3) {
+    margin-left: 860px;
+}
+
+.fanyi-top {
+    display: flex;
+    align-items: center;
+    /* 垂直居中对齐 */
+}
+
+.fanyi textarea,
+.text {
+    width: 47%;
+    height: 200px;
+    margin-top: 10px;
+    margin-right: 30px;
+    float: left;
+    padding: 10px 10px;
+}
+
+.text {
+    border: #000 2px solid;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+
+/* 翻译历史记录 */
+
+.history {
+    margin-top: 10px;
+}
+
+.history ul {
+    height: 120px;
+    overflow: hidden;
+}
+
+.history ul li {
+    font-size: 16px;
+}
+
+
+/* 复制和保存按钮 */
+
+.fanyi button {
+    position: absolute;
+    border: 0;
+    background-color: blue;
+    padding: 2px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.copy {
+    left: 80%;
+    bottom: 55%;
+}
+
+.preserve {
+    left: 84%;
+    bottom: 55%;
+}
+
+.history h6 button {
+    font-size: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+
+/* 页脚部分 */
+
+footer {
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    /* 隐藏溢出的内容 */
+    padding: 10px 5px;
+}
+
+
+/* 定义动画 */
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(90%);
+        /* 初始位置在右侧屏幕外 */
+    }
+    100% {
+        transform: translateX(-90%);
+        /* 最终位置在左侧屏幕外 */
+    }
+}
+
+footer h5 {
+    white-space: nowrap;
+    /* 防止文本换行 */
+    animation: moveLeft 30s linear infinite;
+    /* 应用动画，持续时间 5 秒，线性运动，无限循环 */
+}

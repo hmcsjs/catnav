@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-fanyi</title>
+    <link rel="stylesheet" href="./tools/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./css/to-fanyi.css">
+</head>
+
+<body>
+    <header>
+        <ul class="top">
+            <li><img src="./imgs/to-fanyi/fanyi-logo.jpg" style="width: 40px; height: 40px; border-radius: 50%;" alt=""></li>
+            <li><a href="./index.html">首页</a></li>
+            <li><a href="./toai.html">Toai</a></li>
+            <li>
+                <span></span>
+            </li>
+            <button>换一句</button>
+        </ul>
+    </header>
+    <!-- 翻译部分 -->
+    <main class="fanyi">
+        <div class="fanyi-top">
+            <span>中文</span> <button></button><span>英语</span>
+        </div>
+        <textarea name="" id="" placeholder="请输入...">
+        </textarea>
+        <div class="text"></div>
+        <button class="copy">复制</button>
+        <button class="preserve">保存</button>
+        <div class="history">
+            <h6>历史记录 <button>清空历史</button></h6>
+            <ul>
+
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <h5>翻译接口来自网络,稳定性和准确率有限。喜欢的话,麻烦关注微信公众号。</h5>
+        <h6>QQ:1780766457 &emsp;微信公众号搜索：猫咪导航技术</h6>
+        <img src="./imgs/logo/猫咪公众号.jpg" alt="">
+    </footer>
+
+    <script src=" https://unpkg.com/axios/dist/axios.min.js "></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="./tools/bootstrap-4.6.2-dist/js/bootstrap.min.js " crossorigin="anonymous "></script>
+    <script>
+        // 头部，li里面显示，名言名句
+        let wellSay = document.querySelector('.top li:nth-child(4) span')
+        let sayDiv = document.querySelector('.top li:nth-child(4)')
+        sayDiv.addEventListener('mousemove', () => {
+            wellSay.style.animationPlayState = 'paused'
+        })
+        sayDiv.addEventListener('mouseout', () => {
+            wellSay.style.animationPlayState = ''
+
+        })
+
+        function getSay() {
+            axios({
+                url: 'https://v.api.aa1.cn/api/yiyan/index.php',
+                method: 'get'
+            }).then(re => {
+                let text = re.data.match(/<p>(.*?)<\/p>/g)
+                let newText = text[0].replace(/<p>|<\/p>/g, '')
+                wellSay.innerHTML = newText
+
+            }).catch(er => {
+                wellSay.innerHTML = '错误只是暂时的，获取你需要关闭网络，去欣赏风景！'
+
+            })
+        }
+        getSay()
+            // 点击换一句按钮，重新请求
+        let changeBtn = document.querySelector('.top button')
+        changeBtn.addEventListener('click', () => {
+                getSay()
+            })
+            // 翻译记录获取模块
+        let historyArr = Array()
+        let obj = {}
+        let historyUl = document.querySelector('.history ul')
+
+        function getHistory() {
+            let getArr = JSON.parse(localStorage.getItem('hArr')) || ''
+            console.log(getArr);
+            if (getArr) {
+                getArr.forEach(item => {
+                    let lis = document.createElement('li')
+                    lis.innerHTML = `<span>${item.input}</sapn>:<span>${item.out}</span>`
+                    historyUl.append(lis)
+                });
+            } else {
+                historyUl.innerHTML = ''
+            }
+        }
+        getHistory()
+            // 翻译模块
+        let textInput = document.querySelector('.fanyi textarea')
+        let customText = document.querySelector('.text')
+        let fanyiBtn = document.querySelector('.fanyi-top button')
+        let langPair = 'zh|en'; // 英文到中文，可以根据需要调整
+        textInput.addEventListener('input', () => {
+                if (!textInput.value.trim()) {
+                    customText.innerText = '';
+                    return;
+                }
+                customText.innerText = '翻译中...'
+                const apiUrl = 'https://api.mymemory.translated.net/get';
+                const text = textInput.value.trim();
+                // 使用 MyMemory Translation API
+                fetch(`${apiUrl}?q=${encodeURIComponent(text)}&langpair=${langPair}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.responseData && data.responseData.translatedText) {
+                            customText.innerText = data.responseData.translatedText;
+                        } else {
+                            throw new Error('翻译结果格式错误');
+                        }
+                    })
+                    .catch(err => {
+                        console.error('翻译请求失败:', err);
+                        customText.innerText = '翻译服务暂时不可用，请稍后再试';
+                    });
+            })
+            // 点击切换按钮,变换翻译方式
+        let input1 = document.querySelector('.fanyi-top span:nth-child(1)')
+        let out = document.querySelector('.fanyi-top span:nth-child(3)')
+        fanyiBtn.addEventListener('click', () => {
+                let a = input1.textContent
+                input1.textContent = out.textContent
+                out.textContent = a
+                if (input1.textContent === '中文') {
+                    langPair = 'zh|en';
+                } else {
+                    langPair = 'en|zh';
+                }
+            })
+            // 翻译复制按钮
+        let copyBtn = document.querySelector('.copy')
+        copyBtn.addEventListener('click', async() => {
+            try {
+                await navigator.clipboard.writeText(customText.textContent); // 复制文本内容
+                alert('内容已复制！');
+            } catch (err) {
+                alert('复制失败，请手动复制。');
+                console.error('复制失败:', err);
+            }
+        });
+        // 点击保存按钮,保存文本
+        let preBtn = document.querySelector('.preserve')
+        preBtn.addEventListener('click', () => {
+                let getArr = JSON.parse(localStorage.getItem('hArr')) || historyArr
+                obj.input = textInput.value
+                obj.out = customText.textContent
+                getArr.push(obj)
+                localStorage.setItem('hArr', JSON.stringify(getArr))
+                historyUl.innerHTML = ''
+                getHistory()
+            })
+            // 清除按钮,清楚历史记录
+        let clearBtn = document.querySelector('.history h6 button')
+        clearBtn.addEventListener('click', () => {
+            if (confirm('删除历史记录,不可找回,点击确定删除')) {
+                localStorage.removeItem('hArr')
+                getHistory()
+            }
+        })
+    </script>
+</body>
+
+</html>

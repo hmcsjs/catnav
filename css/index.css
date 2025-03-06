@@ -1,0 +1,788 @@
+/* 设置字体样式 */
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.year-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.time-icon,
+.btn-icon,
+.r-icon,
+.load-icon {
+    width: 30px;
+    height: 30px;
+}
+
+body {
+    font-family: STKaiti;
+    background-color: #ebebef;
+}
+
+
+/* 字体图标 */
+
+
+/* 导航栏模块 */
+
+.navbar {
+    height: 50px;
+    background-color: pink;
+    display: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+#logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: fill;
+    object-fit: contain;
+    object-fit: cover;
+    object-fit: none;
+    object-fit: scale-down;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-top: -12px;
+}
+
+#logo img:hover {
+    animation: rubberBand;
+    animation-duration: 2s;
+}
+
+#network {
+    margin-left: 15px;
+    margin-right: 50px;
+    color: rgb(14, 190, 78);
+}
+
+.navmenu {
+    height: 30px;
+    margin: auto;
+    padding: 0;
+}
+
+.navmenu li {
+    margin-left: 20px;
+    list-style: none;
+    float: left;
+    font-size: 20px;
+}
+
+.navmenu li a {
+    display: block;
+    text-decoration: none;
+    color: #1bb048;
+}
+
+@keyframes myCustomAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navmenu li a:hover {
+    animation: myCustomAnimation 0.5s 1;
+}
+
+
+/* hedaer模块 */
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 88px;
+    background: url(../imgs/01.gif) no-repeat center/cover;
+}
+
+.changeimg {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    color: #f72dd5;
+    background-color: rgb(244, 245, 246);
+}
+
+.btnicon {
+    font-size: 18px;
+    color: #838181;
+    filter: brightness(1.1);
+}
+
+.changeimg:hover {
+    filter: brightness(1.1);
+    color: #3210f5;
+    transform: translateX(-10px);
+}
+
+
+/* 菜单列表 */
+
+li {
+    list-style: none;
+    float: left;
+    margin-left: 25px;
+}
+
+.menulist li a:hover {
+    transform: translate(0, -6px);
+    transform: translate(0, 6px);
+}
+
+.menulist li a {
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.5s;
+}
+
+.menulist {
+    position: absolute;
+    top: 30%;
+    left: 60px;
+}
+
+#vlogo {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-left: 50px;
+    margin-top: 13px;
+}
+
+
+/* 搜索 */
+
+.search {
+    width: 420px;
+    height: 50px;
+    position: absolute;
+    left: 30%;
+    top: 25%;
+    background-color: rgb(244, 241, 242);
+    border-radius: 8px;
+}
+
+.search:hover {
+    filter: brightness(1.1);
+}
+
+.browerimg {
+    display: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-top: 8px;
+    background-color: red;
+    background: url(../imgs/browericon/baidu.jpg) no-repeat center/cover;
+}
+
+.browerimg:hover {
+    filter: brightness(0.8);
+    transform: translateY(-3px);
+}
+
+.search input {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: 8px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    background-color: rgb(244, 241, 242);
+}
+
+.search input:focus {
+    filter: brightness(0.8);
+}
+
+.searchicon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 3px;
+    right: 30px;
+    font-size: 30px;
+    color: red;
+}
+
+
+/* 个人列表 */
+
+.peoplelist {
+    position: absolute;
+    top: 10px;
+    right: 260px;
+}
+
+.peoplelist .peoplefont {
+    font-size: 20px;
+    color: #fff;
+    display: block;
+}
+
+.peoplelist .peoplefont:hover {
+    color: aqua;
+}
+
+.peoplelist li:first-child {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: url(../imgs/logo/parrotlogo.png) no-repeat center/cover;
+}
+
+.peoplelist .peopleicon {
+    width: 20px;
+    height: 20px;
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.peoplelist .peopleicon:hover {
+    color: pink;
+    font-size: 35px;
+}
+
+
+/* 浏览器列表 */
+
+.browerlist {
+    width: 500px;
+    height: 100px;
+    background-color: #f9f6f6;
+    border: rgb(145, 244, 178) 2px solid;
+    border-radius: 5px;
+    margin-top: -15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    position: absolute;
+    right: 37.5%;
+    display: none;
+}
+
+.browerlist .browericon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    transition: all 0.3s;
+    border-radius: 80px;
+}
+
+.browerlist .browericon:hover {
+    background-size: 90%;
+    filter: brightness(0.9);
+}
+
+.br1 {
+    background: url(../imgs/browericon/edge.jpg) no-repeat center/cover;
+}
+
+.br2 {
+    background: url(../imgs/browericon/baidu.jpg) no-repeat center/cover;
+}
+
+.br3 {
+    background: url(../imgs/browericon/google.jpg) no-repeat center/cover;
+}
+
+.br4 {
+    background: url(../imgs/browericon/yandex.jpg) no-repeat center/cover;
+}
+
+.br5 {
+    background: url(../imgs/browericon/360.jpg) no-repeat center/cover;
+}
+
+.browerlist .browerfont {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #f02fba;
+    font-size: 20px;
+    transition: all 0.5s;
+}
+
+.browerlist .browerfont:hover {
+    transform: translateX(-10px);
+}
+
+
+/* 时间和翻译模块 */
+
+.time-translation {
+    width: 95%;
+    height: 120px;
+    margin: 10px auto;
+    padding-top: 6px;
+    background: url(../imgs/tran-time.jpg) no-repeat center/cover;
+}
+
+.time {
+    float: left;
+    width: 30%;
+    height: 80px;
+    margin-top: 15px;
+    border-right: 2px ridge #3210f5;
+}
+
+.time span {
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+}
+
+.year-box,
+.time-box {
+    text-align: center;
+}
+
+.time .timetext {
+    font-size: 30px;
+}
+
+.icon-wangluo:before {
+    margin-right: 20px;
+}
+
+
+/* 翻译模块 */
+
+.translation {
+    float: left;
+    margin-left: 50px;
+    width: 65%;
+}
+
+.custom-textarea {
+    float: left;
+    width: 50%;
+    height: 80px;
+    padding: 10px 10px;
+}
+
+.translation i:nth-child(3) {
+    margin-left: 206px;
+}
+
+.translation i:nth-child(1) {
+    margin-left: 60px;
+}
+
+.translation i:nth-child(2) {
+    margin-left: 260px;
+}
+
+.translation .custom-text {
+    position: relative;
+    float: left;
+    width: 45%;
+    height: 80px;
+    padding: 10px 10px;
+    margin-left: 20px;
+    border: greenyellow 2px solid;
+    background-color: #fff;
+}
+
+.copybtn {
+    position: relative;
+    right: 10px;
+    bottom: -70px;
+}
+
+.copybtn .btn {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none;
+    font-size: 10px;
+    padding: 5px;
+}
+
+.copybtn .btn:focus,
+.copybtn .btn:active,
+.copybtn .btn:hover {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: #007bff;
+    /* 保持原来的背景色，或者根据需要修改 */
+}
+
+
+/* 轮播图和智能ai */
+
+.swiper-aipage,
+.webnav {
+    position: relative;
+    width: 95%;
+    height: 400px;
+    margin: 10px auto;
+}
+
+
+/* 轮播图模块 */
+
+html,
+body {
+    /* position: relative; */
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper,
+.swiper-aipage>img,
+.aipage {
+    float: left;
+    width: 49.3%;
+    height: 100%;
+    margin: 0 0;
+}
+
+.swiper {
+    display: none;
+}
+
+.swiper-wrapper {
+    /* 通过改变animation-timing-function 制作弹性切换效果 */
+    transition: 2s cubic-bezier(0.68, -0.4, 0.27, 1.34) 0.2s;
+}
+
+.swiper-slide {
+    width: 50%;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-aipage>img {
+    object-fit: cover;
+    /* 保持比例，裁剪多余部分 */
+}
+
+.swiper-slide img {
+    width: 100%;
+    /* 图片宽度占满盒子 */
+    height: 100%;
+    /* 高度占满盒子 */
+    object-fit: cover;
+    /* 保持比例，裁剪多余部分 */
+}
+
+.img-tip {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    color: #fff;
+    font-size: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    ;
+}
+
+
+/* 刷新和下载按钮 */
+
+.refresh,
+.load {
+    border: none;
+    font-size: 30px;
+    z-index: 10;
+    background: none;
+}
+
+.refresh {
+    position: absolute;
+    top: 5%;
+    left: 40%;
+}
+
+.load {
+    position: absolute;
+    bottom: 5%;
+    left: 40%;
+}
+
+
+/* 下载提示框 */
+
+.tipbox {
+    display: none;
+    padding: 5px;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    font-size: 20px;
+    z-index: 20;
+    background-color: #faf8f8;
+    border-radius: 5px;
+}
+
+
+/* ai对话模块 */
+
+.aipage {
+    background-color: #fff;
+    margin-left: 20.2px;
+    /* padding: 10px 10px; */
+    border: #838181 solid 2px;
+}
+
+.list-fold h6 img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: #007bff solid 2px;
+    margin: 10px 10px;
+}
+
+.list-fold h6 {
+    width: 140px;
+    display: inline-block;
+}
+
+.fold {
+    display: inline-block;
+    border: 0;
+    background-color: #fff;
+    width: 20px;
+}
+
+.list-fold {
+    margin: 0;
+    padding: 0;
+}
+
+.list-group {
+    float: left;
+    width: 30%;
+    margin: 0;
+}
+
+.list-group-item {
+    margin: 0 !important;
+}
+
+.list-group-item a {
+    color: #000;
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    font-size: 18px
+}
+
+.ac {
+    color: #fff !important;
+}
+
+
+/* ai问答内容显示模块 */
+
+.ai-answer {
+    position: relative;
+    float: left;
+    width: 70%;
+    height: 100%;
+    border-left: #f6f5fa solid 2px;
+}
+
+.ai-text {
+    display: flex;
+    width: 100%;
+    height: 68%;
+    margin-top: 10px;
+    padding: 10px 5px;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.ai-answer h6 {
+    color: #007bff;
+    margin-top: 8px;
+}
+
+.question,
+.answers {
+    font-size: 15px;
+    max-width: 50ch;
+    white-space: normal;
+    word-wrap: break-word;
+    margin-top: 5px;
+}
+
+.question {
+    align-self: flex-end;
+    border: #838181 solid 2px;
+    padding: 6px 6px;
+    background-color: #f0f3f5;
+    border-radius: 5px;
+}
+
+.answers {
+    align-items: flex-start;
+}
+
+.input-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 15px;
+    z-index: 6;
+}
+
+.input-btn button {
+    background-color: #fff;
+    border: none;
+}
+
+
+/* 网站导航模块 */
+
+.webnav {
+    padding: 20px 20px;
+}
+
+.webnav li a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.webnav li a div {
+    width: 150px;
+    height: 60px;
+}
+
+.webnav li a div h4 {
+    margin-bottom: 0;
+}
+
+.webnav li a div p {
+    font-size: 12px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.webnav li a {
+    display: block;
+    width: 200px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 7px;
+    padding-top: 15px;
+    padding-left: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.webnav ul {
+    margin: 0;
+    padding: 0;
+}
+
+.webnav h5 {
+    margin-top: 10px;
+}
+
+.webnav li a {
+    display: flex;
+}
+
+
+/* 网站导航网站 */
+
+.webnav-list li a {
+    display: block;
+    height: 30px;
+    width: 120px;
+    line-height: 30px;
+    padding: 0;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    /* 添加过渡效果 */
+}
+
+.webnav-list li a:hover {
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+
+/* 页脚部分 */
+
+footer {
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    /* 隐藏溢出的内容 */
+    padding: 10px 5px;
+}
+
+
+/* 定义动画 */
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(90%);
+        /* 初始位置在右侧屏幕外 */
+    }
+    100% {
+        transform: translateX(-90%);
+        /* 最终位置在左侧屏幕外 */
+    }
+}
+
+footer h5 {
+    white-space: nowrap;
+    /* 防止文本换行 */
+    animation: moveLeft 30s linear infinite;
+    /* 应用动画，持续时间 5 秒，线性运动，无限循环 */
+}

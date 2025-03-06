@@ -1,0 +1,79 @@
+{
+  "id": "4818902",
+  "name": "pybrary",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2076425",
+      "name": "历史行程",
+      "font_class": "lishihangcheng",
+      "unicode": "e8d5",
+      "unicode_decimal": 59605
+    },
+    {
+      "icon_id": "2076433",
+      "name": "航班动态",
+      "font_class": "hangbandongtai",
+      "unicode": "e8db",
+      "unicode_decimal": 59611
+    },
+    {
+      "icon_id": "4633192",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "5831729",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    },
+    {
+      "icon_id": "9674277",
+      "name": "翻译",
+      "font_class": "tubiao-fanyi",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "16680811",
+      "name": "划词翻译-翻译插入",
+      "font_class": "huacifanyi-fanyicharu",
+      "unicode": "e690",
+      "unicode_decimal": 59024
+    },
+    {
+      "icon_id": "16680812",
+      "name": "划词翻译-翻译删除",
+      "font_class": "huacifanyi-fanyishanchu",
+      "unicode": "e691",
+      "unicode_decimal": 59025
+    },
+    {
+      "icon_id": "19949527",
+      "name": "搜索",
+      "font_class": "sousuo1",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "25607880",
+      "name": "改变",
+      "font_class": "gaibian",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "11847692",
+      "name": "网络",
+      "font_class": "wangluo",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}
